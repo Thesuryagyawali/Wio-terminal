@@ -17,11 +17,11 @@ void loop() {
    delay(100);
    if (light<= 100)
    {
-    digitalWrite(LED_BUILTIN, HIGH);
+    digitalWrite(LED_BUILTIN, LOW);
     }
     else if (light >= 101 && light <= 500)
     {
-      digitalWrite(LED_BUILTIN, LOW);
+      digitalWrite(LED_BUILTIN, HIGH;
       analogWrite(WIO_BUZZER, 128);
       delay(50);
       }

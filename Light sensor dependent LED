@@ -27,6 +27,7 @@ void loop() {
       }
       else{
         analogWrite(WIO_BUZZER, 0);
+        digitalWrite(LED_BUILTIN, LOW);
         }
    tft.print("Light value: ");
    Serial.print("Light value: ");

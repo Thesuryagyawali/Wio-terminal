@@ -1,0 +1,27 @@
+#include"TFT_eSPI.h"
+TFT_eSPI tft;
+
+void setup() {
+  tft.begin();
+  tft.setRotation(3);
+  digitalWrite(LCD_BACKLIGHT, HIGH);
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(WIO_LIGHT, INPUT);
+  Serial.begin(115200);
+ 
+}
+ 
+void loop() {
+   int light = analogRead(WIO_LIGHT);
+   delay(100);
+   if (light<= 100)
+   {
+    digitalWrite(LED_BUILTIN, HIGH);
+    }
+    else
+    {
+      digitalWrite(LED_BUILTIN, LOW);
+      }
+   tft.print("Light value: ");
+   tft.println(light);
+}

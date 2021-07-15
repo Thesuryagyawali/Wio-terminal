@@ -4,9 +4,10 @@ TFT_eSPI tft;
 void setup() {
   tft.begin();
   tft.setRotation(3);
-  digitalWrite(LCD_BACKLIGHT, HIGH);
+  digitalWrite(LCD_BACKLIGHT, HIGH); // turn on the backlight
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(WIO_LIGHT, INPUT);
+  pinMode(WIO_BUZZER, OUTPUT);
   Serial.begin(115200);
  
 }
@@ -18,10 +19,18 @@ void loop() {
    {
     digitalWrite(LED_BUILTIN, HIGH);
     }
-    else
+    else if (light >= 101 && light <= 500)
     {
       digitalWrite(LED_BUILTIN, LOW);
+      analogWrite(WIO_BUZZER, 128);
+      delay(50);
       }
+      else{
+        analogWrite(WIO_BUZZER, 0);
+        }
    tft.print("Light value: ");
+   Serial.print("Light value: ");
    tft.println(light);
+   Serial.println(light);
 }
+
